@@ -2,12 +2,12 @@
 
 {% block content %}
   <ul class="post-list">
-    {% for post in posts %}
       <li>
-        <p>Posted {{post.published_date}} by {{post.author}}</p>
+        {% if post.published_date %}
+          <p>Posted {{post.published_date}} by {{post.author}}</p>
+        {% endif %}
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h2>
         <p>{{post.text|linebreaksbr}}</p>
       </li>
-    {% endfor %}
   </ul>
 {% endblock %}
